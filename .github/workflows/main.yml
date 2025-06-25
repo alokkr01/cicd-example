@@ -7,3 +7,22 @@ jobs:
         steps:
             - name: Greeting
               run: echo "Hello World!"
+
+
+    test-python-3-12:
+        name: check python 3.12
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            - uses: actions/setup-python@v4
+              with:
+                python-version: "3.12"
+
+            - name: Install packages
+              run: |
+                pip install -m pip install -e .[test]
+
+            - name: Test package
+              run: |
+                pytest -v --cov=src --cov-report=xml --cov-report=html --cov-report=term-missing

@@ -21,7 +21,7 @@ jobs:
 
             - name: Install packages
               run: |
-                pip install -m pip install -e .[test]
+                pip install -e .[test]
 
             - name: Test package
               run: |
